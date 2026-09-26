@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quel pays est fait pour toi - JORA</title>
+<style>
+body{margin:0;background:linear-gradient(135deg,#0011ff,#00ccff);min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:Arial;padding:15px}
+.card{background:#fff;color:#000;padding:30px;border-radius:30px;max-width:400px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+input{width:85%;padding:18px;border-radius:50px;border:2px solid #e0f0ff;background:#f0f9ff;text-align:center;font-size:18px;font-weight:bold;outline:none}
+button{width:90%;padding:18px;border:none;border-radius:50px;background:#000;color:#fff;font-weight:900;font-size:18px;margin-top:15px;cursor:pointer}
+.result{margin-top:20px;background:#000;color:#fff;padding:25px;border-radius:20px;text-align:left;animation:pop 0.6s}
+.flag{font-size:70px;text-align:center}
+@keyframes pop{0%{transform:scale(0.9);opacity:0}100%{transform:scale(1);opacity:1}}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>✈️ QUEL PAYS EST FAIT POUR TOI ?</h1>
+<p style="color:#666">JORA va scanner ton âme</p>
+<input id="nom" placeholder="Ton prénom">
+<button onclick="find()">🌍 TROUVER MON PAYS</button>
+<div id="res"></div>
+</div>
+<script>
+function find(){
+let n=document.getElementById('nom').value.trim();
+if(!n)return alert('Ton prénom frère !');
+document.getElementById('res').innerHTML='<br>✈️ Scan de ton passeport spirituel...<br>🛰️ Analyse en cours...';
+setTimeout(()=>{
+let b=n.length;
+let pays=[
+{flag:"🇦🇪",nom:"DUBAÏ",txt:`${n}, tu es fait pour DUBAÏ. Tu aimes le luxe, le business, les grandes voitures. Ton âme est trop grande pour rester seulement à Lubumbashi. En 2027 tu mettras les pieds là-bas pour business.`,job:"Businessman / Femme d'affaire"},
+{flag:"🇺🇸",nom:"USA - TEXAS",txt:`${n}, tu es fait pour les USA. Tu es un bosseur, tu ne dors pas. En Amérique ton travail va payer. Tu es un futur millionnaire mais pas au Congo, là-bas.`,job:"Entrepreneur"},
+{flag:"🇨🇦",nom:"CANADA",txt:`${n}, tu es calme, intelligent, respectueux. Le Canada est fait pour toi. Neige, paix, dollars. Ta future famille va grandir là-bas.`,job:"Ingénieur / Infirmier"},
+{flag:"🇫🇷",nom:"FRANCE - PARIS",txt:`${n}, tu as du style, tu parles bien. La France t'attend. Mode, études, amour. Ton destin est à Paris.`,job:"Styliste / Artiste"},
+{flag:"🇿🇦",nom:"AFRIQUE DU SUD",txt:`${n}, tu es fort, tu es un leader. L'Afrique du Sud est ton prochain terrain. Tu vas briller là-bas avant d'aller en Europe.`,job:"Leader"},
+{flag:"🇹🇷",nom:"TURQUIE",txt:`${n}, ton âme est entre business et beauté. La Turquie est faite pour toi. Commerce + nouvelle vie.`,job:"Commerçant"}
+];
+let p=pays[b%pays.length];
+document.getElementById('res').innerHTML=`
+<div class=result>
+<div class=flag>${p.flag}</div>
+<h2 style=text-align:center;margin:5px 0>${p.nom}</h2>
+<p style=text-align:center;color:#00ccff;font-weight:bold>✈️ ${p.job}</p>
+<p>${p.txt}</p>
+<p style=color:#888;font-size:13px>🛂 Visa Chance: ${80+b%20}% - Ton départ est proche.</p>
+<br>
+<button style=background:#00ccff;color:#000;width:100% onclick=share()>📲 Partager mon pays</button>
+</div>
+`;
+window.txt=`✈️ JORA: Moi ${n} mon pays c'est ${p.nom} ${p.flag} ! Et toi quel est ton pays ? Teste ici: https://kirikoulepetit48-lang.github.io/Pays.html`;
+},2500);
+}
+function share(){window.open('https://wa.me/?text='+encodeURIComponent(window.txt),'_blank')}
+</script>
+</body>
+  </html>
